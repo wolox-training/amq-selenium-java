@@ -15,15 +15,15 @@ public class Wait {
 
     private static final Wait instance= new Wait();
 
-    private Wait (){
-        driver=BrowserManagement.getDriver();
+    private Wait(){
+        driver = BrowserManagement.getDriver();
     }
 
     public static Wait getInstance() {
         return instance;
     }
 
-    private void waitForCondition (ExpectedCondition <?>condition, int timeout) {
+    private void waitForCondition(ExpectedCondition <?>condition, int timeout) {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(condition);
     }

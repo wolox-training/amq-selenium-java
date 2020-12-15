@@ -2,3 +2,4 @@
 /build/
 /.gradle/
 /src/main/java/SimpleTestMain.java
+/.env
