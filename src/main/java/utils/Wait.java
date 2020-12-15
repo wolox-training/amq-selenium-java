@@ -40,4 +40,9 @@ public class Wait {
         ExpectedCondition<List<WebElement>> condition = ExpectedConditions.presenceOfAllElementsLocatedBy(locator);
         waitForCondition(condition, timeout);
     }
+
+    public void untilElementIsVisible(int timeout, WebElement element) {
+        ExpectedCondition<WebElement> condition = ExpectedConditions.visibilityOf(element);
+        waitForCondition(condition, timeout);
+    }
 }

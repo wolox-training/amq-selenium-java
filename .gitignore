@@ -3,3 +3,4 @@
 /.gradle/
 /src/main/java/SimpleTestMain.java
 /.env
+/out/
