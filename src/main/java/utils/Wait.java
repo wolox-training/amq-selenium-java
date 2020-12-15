@@ -13,13 +13,16 @@ public class Wait {
 
     private WebDriver driver;
 
-    private static final Wait instance= new Wait();
+    private static Wait instance;
 
     private Wait(){
         driver = BrowserManagement.getDriver();
     }
 
     public static Wait getInstance() {
+        if(instance==null){
+            instance=new Wait();
+        }
         return instance;
     }
 
