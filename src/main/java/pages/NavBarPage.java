@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class NavBarPage extends BasePage{
+public class NavBarPage extends BasePage {
     @FindBy(linkText = "Sign up")
     private WebElement lnkSignUp;
 
@@ -11,7 +11,7 @@ public class NavBarPage extends BasePage{
         super();
     }
 
-    public void clickSingUpLink(){
+    public void clickSingUpLink() {
         clickElement(lnkSignUp);
     }
 }

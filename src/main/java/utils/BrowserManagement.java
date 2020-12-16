@@ -13,9 +13,10 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 public class BrowserManagement {
 
     private static WebDriver driver;
-    private static Dotenv dotenv= Dotenv.load();
+    private static Dotenv dotenv = Dotenv.load();
 
-    private BrowserManagement() {}
+    private BrowserManagement() {
+    }
 
     public static WebDriver getDriver() {
         if (driver == null) {

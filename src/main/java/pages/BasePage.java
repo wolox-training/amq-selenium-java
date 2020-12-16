@@ -18,23 +18,25 @@ public class BasePage {
         driver = BrowserManagement.getDriver();
         dotenv = Dotenv.load();
         wait = Wait.getInstance();
-        timeOutSeconds= Integer.parseInt(dotenv.get("TIME_SECONDS"));
+        timeOutSeconds = Integer.parseInt(dotenv.get("TIME_SECONDS"));
         PageFactory.initElements
                 (new AjaxElementLocatorFactory
                         (driver, timeOutSeconds), this);
     }
-    protected void clickElement(WebElement element){
-        wait.untilElementIsVisible(timeOutSeconds,element);
+
+    protected void clickElement(WebElement element) {
+        wait.untilElementIsVisible(timeOutSeconds, element);
         element.click();
     }
 
-    protected String getTextElement(WebElement element){
-        wait.untilElementIsVisible(timeOutSeconds,element);
+    protected String getTextElement(WebElement element) {
+        wait.untilElementIsVisible(timeOutSeconds, element);
         return element.getText();
     }
 
-    protected void sendKeystoElement(WebElement element, String value){
-        wait.untilElementIsVisible(timeOutSeconds,element);
+    protected void sendKeystoElement(WebElement element, String value) {
+        wait.untilElementIsVisible(timeOutSeconds, element);
         element.sendKeys(value);
     }
+
 }
