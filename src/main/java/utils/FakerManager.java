@@ -4,21 +4,21 @@ import com.github.javafaker.Faker;
 
 public class FakerManager {
 
-   private static FakerManager instance;
-   private Faker faker;
+    private static FakerManager instance;
+    private Faker faker;
 
-   private FakerManager() {
-       this.faker = new Faker();
-   }
+    private FakerManager() {
+        this.faker = new Faker();
+    }
 
-   public static FakerManager getInstance() {
-       if (instance == null) {
-           instance = new FakerManager();
-       }
-       return instance;
-   }
+    public static FakerManager getInstance() {
+        if (instance == null) {
+            instance = new FakerManager();
+        }
+        return instance;
+    }
 
-   public Faker getFaker() {
-       return this.faker;
-   }
+    public Faker getFaker() {
+        return this.faker;
+    }
 }

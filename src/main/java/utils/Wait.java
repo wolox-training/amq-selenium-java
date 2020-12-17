@@ -15,18 +15,18 @@ public class Wait {
 
     private static Wait instance;
 
-    private Wait(){
+    private Wait() {
         driver = BrowserManagement.getDriver();
     }
 
     public static Wait getInstance() {
-        if(instance==null){
-            instance=new Wait();
+        if (instance == null) {
+            instance = new Wait();
         }
         return instance;
     }
 
-    private void waitForCondition(ExpectedCondition <?>condition, int timeout) {
+    private void waitForCondition(ExpectedCondition<?> condition, int timeout) {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(condition);
     }
@@ -38,6 +38,11 @@ public class Wait {
 
     public void untilElementIsDisplayed(int timeout, By locator) {
         ExpectedCondition<List<WebElement>> condition = ExpectedConditions.presenceOfAllElementsLocatedBy(locator);
+        waitForCondition(condition, timeout);
+    }
+
+    public void untilElementIsVisible(int timeout, WebElement element) {
+        ExpectedCondition<WebElement> condition = ExpectedConditions.visibilityOf(element);
         waitForCondition(condition, timeout);
     }
 }
