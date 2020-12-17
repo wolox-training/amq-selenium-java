@@ -5,5 +5,6 @@ public final class WebApplicationTexts {
     private WebApplicationTexts(){}
 
     public static final String TITLE_SIGN_UP= "Sign Up";
+    public static final String TITLE_SIGN_IN= "Sign In";
 
 }

@@ -15,7 +15,9 @@ public final class ErrorMessages {
     public static final String USER_NAME_ALREADY_EXISTS = "username has already been taken";
     public static final String EMAIL_ALREADY_EXISTS = "email has already been taken";
     public static final String PASSWORD_SHORT_FLIED = "password is too short (minimum is 6 characters)";
-    public static final List<String> FIELDS_CAN_NOT_BLANCK= Collections.unmodifiableList(Arrays.asList("username is invalidcan't be blank", "password can't be blank", "email can't be blank"));
+    public static final List<String> FIELDS_CAN_NOT_BLANCK= Collections.unmodifiableList(Arrays.asList("username can't be blank", "password can't be blank", "email can't be blank"));
+    public static final String FIELDS_LOGIN_BLANCK = "email or password can't be blank";
+    public static final String FIELDS_LOGIN_INVALIDATE = "email or password is invalid";
 
     /**
      * Error messages that will be displayed in Asserts

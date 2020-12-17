@@ -33,4 +33,9 @@ public class StepsHome {
     public void theSystemCorrectlyRegistersTheUser() {
         Assert.assertTrue(homePage.isVisibleImgUser());
     }
+
+    @And("I click on the Sign In link")
+    public void iClickOnTheSignInLink() {
+        navBarPage.clickSingInLink();
+    }
 }

@@ -37,7 +37,7 @@ public class StepsSignUp {
 
     @And("I click the sign up button")
     public void iClickTheSignUpButton() throws InterruptedException {
-        singUpPage.clickButtonSignUp();
+        singUpPage.clickButtonSubmit();
     }
 
     @When("I filled in the fields with existing values {string}")
@@ -120,6 +120,5 @@ public class StepsSignUp {
     public void theEmailFieldIsInInvalidState() {
         Assert.assertFalse(EMAIL_STATUS_ERROR_MSG, singUpPage.getStatusEmailField());
     }
-
 
 }
