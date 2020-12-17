@@ -24,6 +24,10 @@ public class BasePage {
                         (driver, timeOutSeconds), this);
     }
 
+    public void enterTheWebsite() {
+        driver.get(dotenv.get("BASE_URL"));
+    }
+
     protected void clickElement(WebElement element) {
         wait.untilElementIsVisible(timeOutSeconds, element);
         element.click();

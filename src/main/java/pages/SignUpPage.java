@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SignUpPage extends BasePage {
+
     @FindBy(xpath = "//div[@class='container page']//h1[text()='Sign Up']")
     private WebElement titleSingUpPage;
-
     @FindBy(xpath = "//input[@placeholder='Username']")
     private WebElement inputUserName;
     @FindBy(xpath = "//input[@placeholder='Email']")
@@ -19,7 +19,6 @@ public class SignUpPage extends BasePage {
     private WebElement inputPassword;
     @FindBy(xpath = "//button[@type='submit']")
     private WebElement buttonSingUp;
-
     @FindBy(className = "error-messages")
     private WebElement panelErrorMsg;
     @FindBy(xpath = "//ul[@class='error-messages']/li")

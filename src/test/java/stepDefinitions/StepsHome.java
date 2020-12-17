@@ -2,10 +2,11 @@ package stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.github.cdimascio.dotenv.Dotenv;
+import org.junit.Assert;
 import pages.HomePage;
 import pages.NavBarPage;
-import utils.BrowserManagement;
 
 public class StepsHome {
 
@@ -20,7 +21,7 @@ public class StepsHome {
 
     @Given("^that I enter the conduit site$")
     public void enterConduitSite() {
-        BrowserManagement.getDriver().get(dotenv.get("BASE_URL"));
+        homePage.enterTheWebsite();
     }
 
     @And("I click on the Sign Up link")
@@ -28,4 +29,8 @@ public class StepsHome {
         navBarPage.clickSingUpLink();
     }
 
+    @Then("the system correctly registers the user")
+    public void theSystemCorrectlyRegistersTheUser() {
+        Assert.assertTrue(homePage.isVisibleImgUser());
+    }
 }

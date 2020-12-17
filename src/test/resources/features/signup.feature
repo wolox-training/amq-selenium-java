@@ -9,7 +9,7 @@ Feature: Sign Up
   Scenario: Successful registration of a new user
     When I filled out the fields with valid values
     And I click the sign up button
-    Then the system displays a successful registration message
+    Then the system correctly registers the user
 
   @EmptyFields
   Scenario: Empty sing up fields
@@ -43,12 +43,13 @@ Feature: Sign Up
     And I fill out the email field with mail "<email>"
     And I click the sign up button
     Then The email field is in invalid state
-    And The system displays an error message in the email
+    And The system displays an "<msgError>" error message in the email
 
     Examples:
-      | email                     |
-      | anamaria.quinterowolox.co |
-      #| anamaria.quintero@wolox |
+      | email                     | msgError                                                                                                                            |
+      | anamaria.quinterowolox.co | Incluye un signo \"@\" en la dirección de correo electrónico. La dirección \"anamaria.quinterowolox.co\" no incluye el signo \"@\". |
+      | anamaria.quintero@.com    | El signo \".\" está colocado en una posición incorrecta en la dirección \".com\".                                                   |
+      | anamaria.quintero@wolox   | Incluye un signo \".\" en la dirección de correo electrónico. La dirección \"anamaria.quintero@wolox\" no incluye el signo \".\".   |
 
   @ShortPass
   Scenario Outline: Short password

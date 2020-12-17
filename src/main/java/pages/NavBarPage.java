@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class NavBarPage extends BasePage {
+
     @FindBy(linkText = "Sign up")
     private WebElement lnkSignUp;
 

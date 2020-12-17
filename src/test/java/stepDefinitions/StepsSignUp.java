@@ -10,6 +10,7 @@ import utils.FakerManager;
 import java.util.Collections;
 
 import static dictionary.ErrorMessages.*;
+import static dictionary.WebApplicationTexts.TITLE_SIGN_UP;
 
 public class StepsSignUp {
 
@@ -21,7 +22,7 @@ public class StepsSignUp {
 
     @And("the system shows me the registration form")
     public void theSystemShowsMeTheRegistrationForm() {
-        Assert.assertEquals("The expected title was not obtained", "Sign Up", singUpPage.getTitleContainerPage());
+        Assert.assertEquals(TITLE_NOT_OBTAINED, TITLE_SIGN_UP, singUpPage.getTitleContainerPage());
     }
 
     @When("I filled out the fields with valid values")
@@ -39,10 +40,6 @@ public class StepsSignUp {
         singUpPage.clickButtonSignUp();
     }
 
-    @Then("the system displays a successful registration message")
-    public void theSystemDisplaysASuccessfulRegistrationMessage() {
-    }
-
     @When("I filled in the fields with existing values {string}")
     public void iFilledInTheFieldsWithExistingValues(String userName) {
         String email = FakerManager.getInstance().getFaker().internet().emailAddress();
@@ -54,7 +51,7 @@ public class StepsSignUp {
 
     @Then("the system displays the error message indicating that the person already exists")
     public void theSystemDisplaysTheErrorMessageIndicatingThatThePersonAlreadyExists() {
-        Assert.assertTrue("Error message for existing email not found", singUpPage.getErrorMessages().containsAll(Collections.singleton(USER_NAME_ALREADY_EXISTS)));
+        Assert.assertTrue(USER_NAME_EXISTING, singUpPage.getErrorMessages().containsAll(Collections.singleton(USER_NAME_ALREADY_EXISTS)));
 
     }
 
@@ -67,7 +64,7 @@ public class StepsSignUp {
 
     @Then("the system displays error messages corresponding to blank fields")
     public void theSystemDisplaysErrorMessagesCorrespondingToBlankFields() {
-        Assert.assertTrue("The messages obtained do not correspond to those expected from blank fields", getUserNameCanNotBlank().containsAll(singUpPage.getErrorMessages()));
+        Assert.assertTrue(FIELDS_BLANCK, singUpPage.getErrorMessages().containsAll(FIELDS_CAN_NOT_BLANCK));
     }
 
     @When("I fill in the username and password fields with valid data")
@@ -85,13 +82,14 @@ public class StepsSignUp {
 
     @Then("the system displays a message indicating that the mail already exists")
     public void theSystemDisplaysAMessageIndicatingThatTheMailAlreadyExists() {
-        Assert.assertTrue("Error message for existing email not found", singUpPage.getErrorMessages().containsAll(Collections.singleton(EMAIL_ALREADY_EXISTS)));
+        Assert.assertTrue(EMAIL_EXISTING, singUpPage.getErrorMessages().containsAll(Collections.singleton(EMAIL_ALREADY_EXISTS)));
     }
 
-    @And("The system displays an error message in the email")
-    public void theSystemDisplaysAErrorMessageEmail() {
+    @And("The system displays an {string} error message in the email")
+    public void theSystemDisplaysAErrorMessageEmail(String msgExpectedError) {
         String msgError = singUpPage.getMsgValidationEmail();
-        Assert.assertEquals("The error message in the mail field is not what is expected", String.format(EMAIL_INVALID_FORMAT_AT, singUpPage.getInputValueEmail()), msgError);
+        System.out.println(msgError);
+        Assert.assertEquals(EMAIL_ERROR_MSG, msgExpectedError, msgError);
     }
 
     @When("I fill in the username and email fields with valid data")
@@ -109,17 +107,19 @@ public class StepsSignUp {
 
     @Then("The system displays an error message for the short pass")
     public void theSystemDisplaysAnErrorMessageForTheShortPass() {
-        Assert.assertTrue("Error message for short password not found", singUpPage.getErrorMessages().containsAll(Collections.singleton(PASSWORD_SHORT)));
+        Assert.assertTrue(PASSWORD_SHORT, singUpPage.getErrorMessages().containsAll(Collections.singleton(PASSWORD_SHORT_FLIED)));
     }
 
     @Then("In the html code the password is not written")
     public void inTheHtmlCodeThePasswordIsNotWritten() {
         String valuePassField = singUpPage.getInputValuePassword();
-        Assert.assertTrue("Password is seen when inspecting password field", (valuePassField.isEmpty() || valuePassField.equals("")));
+        Assert.assertTrue(PASSWORD_ERROR_MSG, (valuePassField.isEmpty() || valuePassField.equals("")));
     }
 
     @Then("The email field is in invalid state")
     public void theEmailFieldIsInInvalidState() {
-        Assert.assertFalse("The state of the field is not as expected", singUpPage.getStatusEmailField());
+        Assert.assertFalse(EMAIL_STATUS_ERROR_MSG, singUpPage.getStatusEmailField());
     }
+
+
 }
