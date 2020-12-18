@@ -1,22 +1,28 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class contains the common webelements of the Sign In and Sign Up forms
+ */
 public class CommonFormFields extends BasePage{
 
     @FindBy(xpath = "//input[@placeholder='Email']")
     protected WebElement inputEmail;
+
     @FindBy(xpath = "//input[@placeholder='Password']")
     protected WebElement inputPassword;
+
     @FindBy(xpath = "//button[@type='submit']")
-    protected WebElement buttonSingUp;
+    protected WebElement buttonSubmit;
+
     @FindBy(className = "error-messages")
     protected WebElement panelErrorMsg;
+
     @FindBy(xpath = "//ul[@class='error-messages']/li")
     protected List<WebElement> listErrorMsg;
 
@@ -33,7 +39,7 @@ public class CommonFormFields extends BasePage{
     }
 
     public void clickButtonSubmit() {
-        clickElement(buttonSingUp);
+        clickElement(buttonSubmit);
     }
 
     public String getMsgValidationEmail() {

@@ -12,8 +12,10 @@ import java.util.Collections;
 import static dictionary.ErrorMessages.*;
 import static dictionary.WebApplicationTexts.TITLE_SIGN_UP;
 
+/**
+ * Class containing the steps Definitions of the Sign Up scenarios
+ */
 public class StepsSignUp {
-
     private SignUpPage singUpPage;
 
     public StepsSignUp() {
@@ -52,7 +54,6 @@ public class StepsSignUp {
     @Then("the system displays the error message indicating that the person already exists")
     public void theSystemDisplaysTheErrorMessageIndicatingThatThePersonAlreadyExists() {
         Assert.assertTrue(USER_NAME_EXISTING, singUpPage.getErrorMessages().containsAll(Collections.singleton(USER_NAME_ALREADY_EXISTS)));
-
     }
 
     @When("I leave the form fields blank")

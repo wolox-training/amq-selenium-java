@@ -22,4 +22,4 @@ Feature: Sign Up
     When I fill in the username with valid data
     And I fill in the password with wrong data
     And I click the sign up button
-    Then The system displays an error message
+    Then The system displays an error message for invalid data

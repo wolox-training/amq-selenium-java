@@ -4,13 +4,14 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * This class contains the webelements of the register form
+ */
 public class SignUpPage extends CommonFormFields {
 
     @FindBy(xpath = "//div[@class='container page']//h1[text()='Sign Up']")
     private WebElement titleSingUpPage;
+
     @FindBy(xpath = "//input[@placeholder='Username']")
     private WebElement inputUserName;
 
