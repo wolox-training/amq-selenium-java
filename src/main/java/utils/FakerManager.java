@@ -2,8 +2,10 @@ package utils;
 
 import com.github.javafaker.Faker;
 
+/**
+ * Class for generating random data
+ */
 public class FakerManager {
-
     private static FakerManager instance;
     private Faker faker;
 

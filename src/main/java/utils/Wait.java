@@ -1,18 +1,16 @@
 package utils;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-
+/**
+ * Class containing the methods to perform explicit waits
+ */
 public class Wait {
-
     private WebDriver driver;
-
     private static Wait instance;
 
     private Wait() {
@@ -26,21 +24,21 @@ public class Wait {
         return instance;
     }
 
+    /**
+     * Method that allows setting a wait according to a given condition and period of time
+     * @param condition
+     * @param timeout
+     */
     private void waitForCondition(ExpectedCondition<?> condition, int timeout) {
         WebDriverWait wait = new WebDriverWait(driver, timeout);
         wait.until(condition);
     }
 
-    public void untilPageLoads(int timeout) {
-        ExpectedCondition<Object> condition = ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";");
-        waitForCondition(condition, timeout);
-    }
-
-    public void untilElementIsDisplayed(int timeout, By locator) {
-        ExpectedCondition<List<WebElement>> condition = ExpectedConditions.presenceOfAllElementsLocatedBy(locator);
-        waitForCondition(condition, timeout);
-    }
-
+    /**
+     * Method that expects a webelement to be visible for a certain time
+     * @param timeout
+     * @param element
+     */
     public void untilElementIsVisible(int timeout, WebElement element) {
         ExpectedCondition<WebElement> condition = ExpectedConditions.visibilityOf(element);
         waitForCondition(condition, timeout);

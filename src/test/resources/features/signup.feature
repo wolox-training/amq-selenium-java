@@ -8,20 +8,20 @@ Feature: Sign Up
   @SuccessfulSignUp
   Scenario: Successful registration of a new user
     When I filled out the fields with valid values
-    And I click the sign up button
+    And I click the submit button
     Then the system correctly registers the user
 
   @EmptyFields
   Scenario: Empty sing up fields
     When I leave the form fields blank
-    And I click the sign up button
+    And I click the submit button
     Then the system displays error messages corresponding to blank fields
 
   @ExistingEmail
   Scenario Outline: Existing email
     When I fill in the username and password fields with valid data
     And I fill out the email field with mail "<email>"
-    And I click the sign up button
+    And I click the submit button
     Then the system displays a message indicating that the mail already exists
 
     Examples:
@@ -31,7 +31,7 @@ Feature: Sign Up
   @ExistingUser
   Scenario Outline: Existing user
     When I filled in the fields with existing values "<username>"
-    And I click the sign up button
+    And I click the submit button
     Then the system displays the error message indicating that the person already exists
     Examples:
       | username |
@@ -41,7 +41,7 @@ Feature: Sign Up
   Scenario Outline: Invalid Format email
     When I fill in the username and password fields with valid data
     And I fill out the email field with mail "<email>"
-    And I click the sign up button
+    And I click the submit button
     Then The email field is in invalid state
     And The system displays an "<msgError>" error message in the email
 
@@ -55,7 +55,7 @@ Feature: Sign Up
   Scenario Outline: Short password
     When I fill in the username and email fields with valid data
     And I fill out the password field with mail "<password>"
-    And I click the sign up button
+    And I click the submit button
     Then The system displays an error message for the short pass
 
     Examples:

@@ -10,6 +10,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+/**
+ * Class in charge of the initialization and configuration of the webdriver
+ */
 public class BrowserManagement {
 
     private static WebDriver driver;
@@ -25,6 +28,10 @@ public class BrowserManagement {
         return driver;
     }
 
+    /**
+     * Method that determines through the BROWSER environment variable the browser to use and its configuration
+     * @return
+     */
     public static WebDriver initializeDriver() {
         switch (dotenv.get("BROWSER")) {
             case "firefox":
@@ -45,6 +52,7 @@ public class BrowserManagement {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--start-maximized");
                 chromeOptions.addArguments("--incognito");
+                chromeOptions.setHeadless(true);
                 desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
                 driver = new ChromeDriver(chromeOptions);
                 break;

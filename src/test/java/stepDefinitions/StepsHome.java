@@ -3,16 +3,16 @@ package stepDefinitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.github.cdimascio.dotenv.Dotenv;
 import org.junit.Assert;
 import pages.HomePage;
 import pages.NavBarPage;
 
+/**
+ * Class containing the stepsdefinitions related to homePage and navBarPage
+ */
 public class StepsHome {
-
     private HomePage homePage;
     private NavBarPage navBarPage;
-    private static Dotenv dotenv = Dotenv.load();
 
     public StepsHome() {
         this.homePage = new HomePage();
@@ -32,5 +32,10 @@ public class StepsHome {
     @Then("the system correctly registers the user")
     public void theSystemCorrectlyRegistersTheUser() {
         Assert.assertTrue(homePage.isVisibleImgUser());
+    }
+
+    @And("I click on the Sign In link")
+    public void iClickOnTheSignInLink() {
+        navBarPage.clickSingInLink();
     }
 }
