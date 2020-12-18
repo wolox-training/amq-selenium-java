@@ -58,7 +58,7 @@ public class StepsSignIn {
 
     @And("I fill in the password with wrong data")
     public void iFillInThePasswordWithWrongData() {
-        String password = RandomStringUtils.randomAlphabetic(5);
+        String password = FakerManager.getInstance().getFaker().internet().password(1,5);
         signInPage.sendTextPasswordField(password);
     }
 

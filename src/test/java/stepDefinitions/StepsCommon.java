@@ -21,7 +21,7 @@ public class StepsCommon {
     }
 
     @And("I click the submit button")
-    public void iClickTheSignUpButton() throws InterruptedException {
+    public void iClickTheSignUpButton(){
         commonFormFields.clickButtonSubmit();
     }
 
@@ -33,7 +33,6 @@ public class StepsCommon {
     @And("The system displays an {string} error message in the email")
     public void theSystemDisplaysAErrorMessageEmail(String msgExpectedError) {
         String msgError = commonFormFields.getMsgValidationEmail();
-        System.out.println(msgError);
         Assert.assertEquals(EMAIL_ERROR_MSG, msgExpectedError, msgError);
     }
 }
