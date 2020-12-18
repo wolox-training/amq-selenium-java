@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -33,9 +32,7 @@ public class SignUpPage extends CommonFormFields {
         return inputPassword.getAttribute("value");
     }
 
-    public boolean getStatusEmailField() {
-        return (Boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].validity.valid;", inputEmail);
-    }
+
 
 
 }

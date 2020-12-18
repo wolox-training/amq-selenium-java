@@ -37,11 +37,6 @@ public class StepsSignUp {
         singUpPage.sendTextPasswordField(password);
     }
 
-    @And("I click the sign up button")
-    public void iClickTheSignUpButton() throws InterruptedException {
-        singUpPage.clickButtonSubmit();
-    }
-
     @When("I filled in the fields with existing values {string}")
     public void iFilledInTheFieldsWithExistingValues(String userName) {
         String email = FakerManager.getInstance().getFaker().internet().emailAddress();
@@ -76,21 +71,9 @@ public class StepsSignUp {
         singUpPage.sendTextPasswordField(password);
     }
 
-    @And("I fill out the email field with mail {string}")
-    public void iFillOutTheEmailFieldWithMail(String email) {
-        singUpPage.sendTextEmailField(email);
-    }
-
     @Then("the system displays a message indicating that the mail already exists")
     public void theSystemDisplaysAMessageIndicatingThatTheMailAlreadyExists() {
         Assert.assertTrue(EMAIL_EXISTING, singUpPage.getErrorMessages().containsAll(Collections.singleton(EMAIL_ALREADY_EXISTS)));
-    }
-
-    @And("The system displays an {string} error message in the email")
-    public void theSystemDisplaysAErrorMessageEmail(String msgExpectedError) {
-        String msgError = singUpPage.getMsgValidationEmail();
-        System.out.println(msgError);
-        Assert.assertEquals(EMAIL_ERROR_MSG, msgExpectedError, msgError);
     }
 
     @When("I fill in the username and email fields with valid data")
@@ -117,9 +100,6 @@ public class StepsSignUp {
         Assert.assertTrue(PASSWORD_ERROR_MSG, (valuePassField.isEmpty() || valuePassField.equals("")));
     }
 
-    @Then("The email field is in invalid state")
-    public void theEmailFieldIsInInvalidState() {
-        Assert.assertFalse(EMAIL_STATUS_ERROR_MSG, singUpPage.getStatusEmailField());
-    }
+
 
 }

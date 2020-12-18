@@ -4,6 +4,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.cdimascio.dotenv.Dotenv;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import pages.SignInPage;
 import utils.FakerManager;
@@ -57,6 +58,12 @@ public class StepsSignIn {
 
     @And("I fill in the password with wrong data")
     public void iFillInThePasswordWithWrongData() {
+        String password = RandomStringUtils.randomAlphabetic(5);
+        signInPage.sendTextPasswordField(password);
+    }
+
+    @And("I fill in the password with valid data")
+    public void iFillInThePasswordWithValidData() {
         String password = FakerManager.getInstance().getFaker().internet().password();
         signInPage.sendTextPasswordField(password);
     }

@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -46,6 +47,9 @@ public class CommonFormFields extends BasePage{
         return inputEmail.getAttribute("validationMessage");
     }
 
+    public boolean getStatusEmailField() {
+        return (Boolean) ((JavascriptExecutor) driver).executeScript("return arguments[0].validity.valid;", inputEmail);
+    }
     public List<String> getErrorMessages() {
         List<String> msg = new ArrayList<>();
         if (panelErrorMsg.isDisplayed()) {
