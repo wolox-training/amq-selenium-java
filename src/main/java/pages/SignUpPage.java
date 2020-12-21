@@ -27,6 +27,9 @@ public class SignUpPage extends CommonFormFields {
         sendKeystoElement(inputUserName, userName);
     }
 
+    public String getValuerUserNameField(){
+        return inputUserName.getAttribute(ATTRIBUTE_VALUE);
+    }
 
     public String getInputValuePassword() {
         return inputPassword.getAttribute(ATTRIBUTE_VALUE);

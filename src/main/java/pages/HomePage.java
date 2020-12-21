@@ -28,6 +28,9 @@ public class HomePage extends BasePage {
     @FindBy(css = ".preview-link>h1")
     private List<WebElement> listArticles;
 
+    @FindBy(linkText = "Edit Profile Settings")
+    private WebElement lnkEditProfileSettings;
+
     public HomePage() {
         super();
     }
@@ -58,5 +61,9 @@ public class HomePage extends BasePage {
     }
     public boolean isVisibleFavoritedArticles(){
         return elementIsDisplayed(lnkFavoritedArticles);
+    }
+
+    public void clicEditProfileSettingsLink(){
+        clickElement(lnkEditProfileSettings);
     }
 }

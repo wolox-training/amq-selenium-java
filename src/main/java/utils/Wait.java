@@ -62,5 +62,9 @@ public class Wait {
         ExpectedCondition<WebElement> condition = ExpectedConditions.elementToBeClickable(element);
         waitForCondition(condition, timeout);
     }
+    public void waitForEditableWebelement(int timeout, WebElement element) {
+        ExpectedCondition<Boolean> condition = ExpectedConditions.attributeToBe(element,"readonly","false");
+        waitForCondition(condition, timeout);
+    }
 
  }

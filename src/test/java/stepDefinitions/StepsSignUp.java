@@ -30,12 +30,12 @@ public class StepsSignUp {
 
     @When("I filled out the fields with valid values")
     public void iFilledOutTheFieldsWithValidValues() {
-        String userName = FakerManager.getInstance().getFaker().name().username().replace(".", "");
-        String email = FakerManager.getInstance().getFaker().internet().emailAddress();
-        String password = FakerManager.getInstance().getFaker().internet().password();
-        singUpPage.sendTextUserNameField(userName);
-        singUpPage.sendTextEmailField(email);
-        singUpPage.sendTextPasswordField(password);
+        Profile.setUserName(FakerManager.getInstance().getFaker().name().username().replace(".", ""));
+        Profile.setEmail(FakerManager.getInstance().getFaker().internet().emailAddress());
+        Profile.setNewPassword(FakerManager.getInstance().getFaker().internet().password());
+        singUpPage.sendTextUserNameField(Profile.getUserName());
+        singUpPage.sendTextEmailField(Profile.getEmail());
+        singUpPage.sendTextPasswordField(Profile.getNewPassword());
     }
 
     @When("I filled in the fields with existing values {string}")
@@ -100,5 +100,12 @@ public class StepsSignUp {
         String valuePassField = singUpPage.getInputValuePassword();
         Assert.assertTrue(PASSWORD_ERROR_MSG, (valuePassField.isEmpty() || valuePassField.equals("")));
     }
+
+    @And("I register as a new user")
+    public void iRegisterAsANewUser() {
+        iFilledOutTheFieldsWithValidValues();
+        singUpPage.clickButtonSubmit();
+    }
+
 
 }

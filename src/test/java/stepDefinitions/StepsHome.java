@@ -84,4 +84,9 @@ public class StepsHome {
         Assert.assertTrue(homePage.isVisibleMyArticlesLink());
         Assert.assertTrue(homePage.isVisibleFavoritedArticles());
     }
+
+    @And("I click the Edit Profile Settings link")
+    public void iClickTheEditProfileSettingsLink() {
+        homePage.clicEditProfileSettingsLink();
+    }
 }
