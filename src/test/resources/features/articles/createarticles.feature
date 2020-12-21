@@ -3,7 +3,7 @@ Feature: Create articles
   Background:
     Given that I enter the conduit site
     And I click on the Sign In link
-    And Authentic me on the site
+    And Authenticate me on the site
 
   @SuccessfulCreateArticle
   Scenario: Successful article
