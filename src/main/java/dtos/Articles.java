@@ -2,40 +2,40 @@ package dtos;
 
 public class Articles {
 
-    private static String titleArticle = "";
-    private static String aboutArticle = "";
-    private static String contentArticle = "";
-    private static String tagArticle = "";
+    private String titleArticle = "";
+    private String aboutArticle = "";
+    private String contentArticle = "";
+    private String tagArticle = "";
 
-    public static String getTitleArticle() {
+    public String getTitleArticle() {
         return titleArticle;
     }
 
-    public static void setTitleArticle(String titleArticle) {
-        Articles.titleArticle = titleArticle;
+    public void setTitleArticle(String titleArticle) {
+        this.titleArticle = titleArticle;
     }
 
-    public static String getAboutArticle() {
+    public String getAboutArticle() {
         return aboutArticle;
     }
 
-    public static void setAboutArticle(String aboutArticle) {
-        Articles.aboutArticle = aboutArticle;
+    public void setAboutArticle(String aboutArticle) {
+        this.aboutArticle = aboutArticle;
     }
 
-    public static String getContentArticle() {
+    public String getContentArticle() {
         return contentArticle;
     }
 
-    public static void setContentArticle(String contentArticle) {
-        Articles.contentArticle = contentArticle;
+    public void setContentArticle(String contentArticle) {
+        this.contentArticle = contentArticle;
     }
 
-    public static String getTagArticle() {
+    public String getTagArticle() {
         return tagArticle;
     }
 
-    public static void setTagArticle(String tagArticle) {
-        Articles.tagArticle = tagArticle;
+    public void setTagArticle(String tagArticle) {
+        this.tagArticle = tagArticle;
     }
 }

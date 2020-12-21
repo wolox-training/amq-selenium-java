@@ -1,13 +1,13 @@
-Feature: Edit - Delete Articles
+Feature: Edit Articles
 
   Background:
     Given that I enter the conduit site
     And I click on the Sign In link
-    And Authentic me on the site
+    And Authenticate me on the site
     And I click on the New Post link
     And I create an article
 
-  @SuccessfulEditArticle
+  @HappyPath
   Scenario: Successful article
     When I click the edit button
     And the system shows me a form to create or edit an article
@@ -15,7 +15,7 @@ Feature: Edit - Delete Articles
     And click on the Publish Article button
     Then the article is created or edit successfully
 
-  @EmptyFields
+  @SadPath
   Scenario: Successful article
     When I click the edit button
     And the system shows me a form to create or edit an article
@@ -23,19 +23,14 @@ Feature: Edit - Delete Articles
     And click on the Publish Article button
     Then the system displays the error message indicating that the fields should not be empty
 
-  @SuccessfulDeleteArticle
-  Scenario: Successful article
-    When I click the delete button
-    Then the article was successfully removed
-
-  @SuccessfulGlobalFeedArticle
+  @HappyPath
   Scenario: Successful article
     When I click on the Home link
     And the system displays the Your Feed and Global Feed links
     And I click on the Global Feed link
     Then the article is in the first position of the list
 
-  @SuccessfulMyPostArticle
+  @HappyPath
   Scenario: Successful article
     When I click on the user name
     And the system displays the My Articles and Favorited Articles links

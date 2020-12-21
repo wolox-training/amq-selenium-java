@@ -5,7 +5,7 @@ Feature: Create articles
     And I click on the Sign In link
     And Authenticate me on the site
 
-  @SuccessfulCreateArticle
+  @HappyPath
   Scenario: Successful article
     When I click on the New Post link
     And the system shows me a form to create or edit an article
@@ -13,7 +13,7 @@ Feature: Create articles
     And click on the Publish Article button
     Then the article is created or edit successfully
 
-  @CreateEmptyFields
+  @BadPath
   Scenario: Successful article
     When I click on the New Post link
     And the system shows me a form to create or edit an article

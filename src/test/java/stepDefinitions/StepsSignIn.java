@@ -72,7 +72,7 @@ public class StepsSignIn {
         Assert.assertTrue(INVALID_DATA, signInPage.getErrorMessages().contains(FIELDS_LOGIN_INVALIDATE));
     }
 
-    @And("Authentic me on the site")
+    @And("Authenticate me on the site")
     public void authenticMeOnTheSite() {
         signInPage.sendTextEmailField(dotenv.get("EMAIL"));
         signInPage.sendTextPasswordField(dotenv.get("PASSWORD"));

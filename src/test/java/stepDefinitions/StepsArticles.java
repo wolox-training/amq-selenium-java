@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.ArticleCreateEditPage;
 import pages.ArticleReadPage;
+import utils.DataManager;
 import utils.FakerManager;
 
 import static dictionary.ErrorMessages.*;
@@ -15,7 +16,6 @@ public class StepsArticles {
 
     private ArticleCreateEditPage articlePage;
     private ArticleReadPage articleReadPage;
-
 
     public StepsArticles() {
         this.articlePage = new ArticleCreateEditPage();
@@ -42,25 +42,28 @@ public class StepsArticles {
 
     @Then("the system displays the error message indicating that the fields should not be empty")
     public void theSystemDisplaysTheErrorMessageIndicatingThatTheFieldsShouldNotBeEmpty() {
-        Assert.assertTrue(FIELDS_BLANCK,articlePage.getErrorMessagesArticle().contains(FIELDS_ARTICLES_BLANCK));
+        Assert.assertTrue(FIELDS_BLANCK,articlePage.getErrorMessages().contains(FIELDS_ARTICLES_BLANCK));
     }
 
     @And("fill in all the fields of the article form")
     public void fillInAllTheFieldsOfTheArticleForm() {
-        Articles.setTitleArticle(FakerManager.getInstance().getFaker().book().title());
-        Articles.setAboutArticle(FakerManager.getInstance().getFaker().book().author());
-        Articles.setContentArticle(FakerManager.getInstance().getFaker().address().fullAddress());
-        Articles.setTagArticle(FakerManager.getInstance().getFaker().book().genre());
-        articlePage.writeArticleTitle(Articles.getTitleArticle());
-        articlePage.writeArticleAbout(Articles.getAboutArticle());
-        articlePage.writeArticleContent(Articles.getContentArticle());
-        articlePage.writeArticleTags(Articles.getTagArticle());
+        Articles articles = new Articles();
+        articles.setTitleArticle(FakerManager.getInstance().getFaker().book().title());
+        articles.setAboutArticle(FakerManager.getInstance().getFaker().book().author());
+        articles.setContentArticle(FakerManager.getInstance().getFaker().address().fullAddress());
+        articles.setTagArticle(FakerManager.getInstance().getFaker().book().genre());
+        articlePage.writeArticleTitle(articles.getTitleArticle());
+        articlePage.writeArticleAbout(articles.getAboutArticle());
+        articlePage.writeArticleContent(articles.getContentArticle());
+        articlePage.writeArticleTags(articles.getTagArticle());
+        DataManager.getInstance().setArticles(articles);
     }
 
     @Then("the article is created or edit successfully")
     public void theArticleIsCreatedSuccessfully() {
-        Assert.assertEquals(ARTICLE_TITLE_ERROR,Articles.getTitleArticle(),articleReadPage.getTitleArticle());
-        Assert.assertEquals(ARTICLE_TITLE_ERROR,Articles.getContentArticle(),articleReadPage.getContentArticle());
+        Articles articles = DataManager.getInstance().getArticles();
+        Assert.assertEquals(ARTICLE_TITLE_ERROR,articles.getTitleArticle(),articleReadPage.getTitleArticle());
+        Assert.assertEquals(ARTICLE_CONTENT_ERROR,articles.getContentArticle(),articleReadPage.getContentArticle());
     }
 
     @And("I create an article")

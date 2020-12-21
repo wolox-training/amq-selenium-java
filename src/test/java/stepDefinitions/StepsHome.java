@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import dtos.Articles;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.HomePage;
 import pages.NavBarPage;
+import utils.DataManager;
 
 import static dictionary.ErrorMessages.ARTICLE_NOT_FOUND_GLOBAL_FEED;
 
@@ -60,8 +60,7 @@ public class StepsHome {
 
     @Then("the article is in the first position of the list")
     public void theArticleIsInTheFirstPositionOfTheList() {
-        System.out.println("El articulo obtenido es " + homePage.getFirstArticle());
-        Assert.assertEquals(ARTICLE_NOT_FOUND_GLOBAL_FEED, Articles.getTitleArticle(),homePage.getFirstArticle());
+        Assert.assertEquals(ARTICLE_NOT_FOUND_GLOBAL_FEED, DataManager.getInstance().getArticles().getTitleArticle(), homePage.getFirstArticle());
     }
 
     @When("I click on the user name")
@@ -71,7 +70,7 @@ public class StepsHome {
 
     @And("the system displays the Your Feed and Global Feed links")
     public void theSystemDisplaysTheYourFeedAndGlobalFeedLinks() {
-        if (!homePage.isVisibleYourFeedLink()){
+        if (!homePage.isVisibleYourFeedLink()) {
             iClickOnTheHomeLink();
         }
         Assert.assertTrue(homePage.isVisibleYourFeedLink());
@@ -79,7 +78,7 @@ public class StepsHome {
 
     @And("the system displays the My Articles and Favorited Articles links")
     public void theSystemDisplaysTheMyArticlesAndFavoritedArticlesLinks() {
-        if (!homePage.isVisibleMyArticlesLink()){
+        if (!homePage.isVisibleMyArticlesLink()) {
             iClickOnTheUserName();
         }
         Assert.assertTrue(homePage.isVisibleMyArticlesLink());
