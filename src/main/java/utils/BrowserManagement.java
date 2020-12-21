@@ -52,7 +52,7 @@ public class BrowserManagement {
                 ChromeOptions chromeOptions = new ChromeOptions();
                 chromeOptions.addArguments("--start-maximized");
                 chromeOptions.addArguments("--incognito");
-                chromeOptions.setHeadless(true);
+                chromeOptions.setHeadless(false);
                 desiredCapabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
                 driver = new ChromeDriver(chromeOptions);
                 break;

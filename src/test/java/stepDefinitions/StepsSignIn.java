@@ -4,7 +4,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.cdimascio.dotenv.Dotenv;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import pages.SignInPage;
 import utils.FakerManager;
@@ -72,4 +71,12 @@ public class StepsSignIn {
     public void theSystemDisplaysAnErrorMessageForInvalidData() {
         Assert.assertTrue(INVALID_DATA, signInPage.getErrorMessages().contains(FIELDS_LOGIN_INVALIDATE));
     }
+
+    @And("Authentic me on the site")
+    public void authenticMeOnTheSite() {
+        signInPage.sendTextEmailField(dotenv.get("EMAIL"));
+        signInPage.sendTextPasswordField(dotenv.get("PASSWORD"));
+        signInPage.clickButtonSubmit();
+    }
+
 }

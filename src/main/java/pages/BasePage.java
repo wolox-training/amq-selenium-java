@@ -16,6 +16,7 @@ public class BasePage {
     protected Wait wait;
     protected Dotenv dotenv;
     protected int timeOutSeconds;
+    protected final String ATTRIBUTE_VALUE="value";
 
     public BasePage() {
         driver = BrowserManagement.getDriver();
@@ -39,7 +40,7 @@ public class BasePage {
      * @param element
      */
     protected void clickElement(WebElement element) {
-        wait.untilElementIsVisible(timeOutSeconds, element);
+        wait.waitForClikableWebelement(timeOutSeconds, element);
         element.click();
     }
 
@@ -61,6 +62,36 @@ public class BasePage {
     protected void sendKeystoElement(WebElement element, String value) {
         wait.untilElementIsVisible(timeOutSeconds, element);
         element.sendKeys(value);
+    }
+
+    /**
+     * With this method a forced wait is performed
+     */
+    public void forceWait(){
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    /**
+     * This method verifies if a webelement is displayed
+     * @param element
+     * @return
+     */
+    public boolean elementIsDisplayed(WebElement element){
+        try{
+            return element.isDisplayed();
+        }catch (Exception e){
+            return false;
+        }
+    }
+    /**
+     * This method waits until the page loads
+     */
+    public void waitForPageLoad (){
+        wait.untilPageLoads(timeOutSeconds);
     }
 
 }

@@ -1,11 +1,15 @@
 package stepDefinitions;
 
+import dtos.Articles;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.HomePage;
 import pages.NavBarPage;
+
+import static dictionary.ErrorMessages.ARTICLE_NOT_FOUND_GLOBAL_FEED;
 
 /**
  * Class containing the stepsdefinitions related to homePage and navBarPage
@@ -37,5 +41,48 @@ public class StepsHome {
     @And("I click on the Sign In link")
     public void iClickOnTheSignInLink() {
         navBarPage.clickSingInLink();
+    }
+
+    @When("I click on the New Post link")
+    public void iClickOnTheNewPostLink() {
+        navBarPage.clickNewPostLink();
+    }
+
+    @When("I click on the Home link")
+    public void iClickOnTheHomeLink() {
+        navBarPage.clickHomeLink();
+    }
+
+    @And("I click on the Global Feed link")
+    public void iClickOnTheGlobalFeedLink() {
+        homePage.clickGlobalFeedLnk();
+    }
+
+    @Then("the article is in the first position of the list")
+    public void theArticleIsInTheFirstPositionOfTheList() {
+        System.out.println("El articulo obtenido es " + homePage.getFirstArticle());
+        Assert.assertEquals(ARTICLE_NOT_FOUND_GLOBAL_FEED, Articles.getTitleArticle(),homePage.getFirstArticle());
+    }
+
+    @When("I click on the user name")
+    public void iClickOnTheUserName() {
+        homePage.clickUserPic();
+    }
+
+    @And("the system displays the Your Feed and Global Feed links")
+    public void theSystemDisplaysTheYourFeedAndGlobalFeedLinks() {
+        if (!homePage.isVisibleYourFeedLink()){
+            iClickOnTheHomeLink();
+        }
+        Assert.assertTrue(homePage.isVisibleYourFeedLink());
+    }
+
+    @And("the system displays the My Articles and Favorited Articles links")
+    public void theSystemDisplaysTheMyArticlesAndFavoritedArticlesLinks() {
+        if (!homePage.isVisibleMyArticlesLink()){
+            iClickOnTheUserName();
+        }
+        Assert.assertTrue(homePage.isVisibleMyArticlesLink());
+        Assert.assertTrue(homePage.isVisibleFavoritedArticles());
     }
 }

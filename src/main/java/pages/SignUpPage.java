@@ -29,7 +29,7 @@ public class SignUpPage extends CommonFormFields {
 
 
     public String getInputValuePassword() {
-        return inputPassword.getAttribute("value");
+        return inputPassword.getAttribute(ATTRIBUTE_VALUE);
     }
 
 

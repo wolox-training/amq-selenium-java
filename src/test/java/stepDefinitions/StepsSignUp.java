@@ -100,6 +100,4 @@ public class StepsSignUp {
         Assert.assertTrue(PASSWORD_ERROR_MSG, (valuePassField.isEmpty() || valuePassField.equals("")));
     }
 
-
-
 }
