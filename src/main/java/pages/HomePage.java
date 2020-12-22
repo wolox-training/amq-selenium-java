@@ -66,4 +66,9 @@ public class HomePage extends BasePage {
     public void clicEditProfileSettingsLink(){
         clickElement(lnkEditProfileSettings);
     }
+
+    public String getUserNameLink(){
+        forceWait();
+        return imgUser.getAttribute("alt");
+    }
 }

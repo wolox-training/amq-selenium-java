@@ -21,7 +21,7 @@ public class StepsCommon {
     }
 
     @And("I click the submit button")
-    public void iClickTheSignUpButton(){
+    public void iClickTheSignUpButton() {
         commonFormFields.clickButtonSubmit();
     }
 

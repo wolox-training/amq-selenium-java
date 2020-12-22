@@ -48,4 +48,19 @@ public class ProfilePage extends SignUpPage {
         clickElement(buttonLogOut);
     }
 
+    public String getValueUrlProfilePictureField(){
+        return inputUrlProfilePicture.getAttribute(ATTRIBUTE_VALUE);
+    }
+
+    public String getTextBiographyField(){
+        return getTextElement(inputBiography);
+    }
+
+    public void clearProfileFlieds() {
+        deleteInformationFieldValue(inputUrlProfilePicture);
+        deleteInformationFieldValue(inputUserName);
+        cleanTextAreaField(inputBiography);
+        deleteInformationFieldValue(inputEmail);
+        deleteInformationFieldValue(inputNewPassword);
+    }
 }

@@ -12,7 +12,7 @@ public class SignUpPage extends CommonFormFields {
     private WebElement titleSingUpPage;
 
     @FindBy(xpath = "//input[@placeholder='Username']")
-    private WebElement inputUserName;
+    protected WebElement inputUserName;
 
 
     public SignUpPage() {

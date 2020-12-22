@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.SignUpPage;
+import utils.DataManager;
 import utils.FakerManager;
 
 import java.util.Collections;
@@ -30,12 +31,14 @@ public class StepsSignUp {
 
     @When("I filled out the fields with valid values")
     public void iFilledOutTheFieldsWithValidValues() {
-        Profile.setUserName(FakerManager.getInstance().getFaker().name().username().replace(".", ""));
-        Profile.setEmail(FakerManager.getInstance().getFaker().internet().emailAddress());
-        Profile.setNewPassword(FakerManager.getInstance().getFaker().internet().password());
-        singUpPage.sendTextUserNameField(Profile.getUserName());
-        singUpPage.sendTextEmailField(Profile.getEmail());
-        singUpPage.sendTextPasswordField(Profile.getNewPassword());
+        Profile profile = new Profile();
+        profile.setUserName(FakerManager.getInstance().getFaker().name().username().replace(".", ""));
+        profile.setEmail(FakerManager.getInstance().getFaker().internet().emailAddress());
+        profile.setNewPassword(FakerManager.getInstance().getFaker().internet().password());
+        singUpPage.sendTextUserNameField(profile.getUserName());
+        singUpPage.sendTextEmailField(profile.getEmail());
+        singUpPage.sendTextPasswordField(profile.getNewPassword());
+        DataManager.getInstance().setProfile(profile);
     }
 
     @When("I filled in the fields with existing values {string}")
@@ -61,7 +64,7 @@ public class StepsSignUp {
 
     @Then("the system displays error messages corresponding to blank fields")
     public void theSystemDisplaysErrorMessagesCorrespondingToBlankFields() {
-        Assert.assertTrue(FIELDS_BLANCK, singUpPage.getErrorMessages().containsAll(FIELDS_CAN_NOT_BLANCK));
+        Assert.assertTrue(FIELDS_BLANCK, FIELDS_CAN_NOT_BLANCK.containsAll(singUpPage.getErrorMessages()));
     }
 
     @When("I fill in the username and password fields with valid data")

@@ -10,6 +10,7 @@ import pages.NavBarPage;
 import utils.DataManager;
 
 import static dictionary.ErrorMessages.ARTICLE_NOT_FOUND_GLOBAL_FEED;
+import static dictionary.ErrorMessages.USER_NAME_PROFILE_ERROR;
 
 /**
  * Class containing the stepsdefinitions related to homePage and navBarPage
@@ -88,5 +89,12 @@ public class StepsHome {
     @And("I click the Edit Profile Settings link")
     public void iClickTheEditProfileSettingsLink() {
         homePage.clicEditProfileSettingsLink();
+    }
+
+    @And("the username is updated in the navigation bar")
+    public void theUsernameIsUpdatedInTheNavigationBar() {
+        Assert.assertEquals(USER_NAME_PROFILE_ERROR, DataManager.getInstance().getProfile().getUserName(), homePage.getUserNameLink());
+        homePage.clickUserPic();
+        iClickTheEditProfileSettingsLink();
     }
 }

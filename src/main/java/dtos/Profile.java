@@ -1,49 +1,50 @@
 package dtos;
 
 public class Profile {
-    private static String urlProfilePicture = "";
-    private static String userName = "";
-    private static String biography = "";
-    private static String email = "";
-    private static String newPassword = "";
 
-    public static String getUrlProfilePicture() {
+    private String urlProfilePicture = "";
+    private String userName = "";
+    private String biography = "";
+    private String email = "";
+    private String newPassword = "";
+
+    public String getUrlProfilePicture() {
         return urlProfilePicture;
     }
 
-    public static void setUrlProfilePicture(String urlProfilePicture) {
-        Profile.urlProfilePicture = urlProfilePicture;
+    public void setUrlProfilePicture(String urlProfilePicture) {
+        this.urlProfilePicture = urlProfilePicture;
     }
 
-    public static String getUserName() {
+    public String getUserName() {
         return userName;
     }
 
-    public static void setUserName(String userName) {
-        Profile.userName = userName;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public static String getBiography() {
+    public String getBiography() {
         return biography;
     }
 
-    public static void setBiography(String biography) {
-        Profile.biography = biography;
+    public void setBiography(String biography) {
+        this.biography = biography;
     }
 
-    public static String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public static void setEmail(String email) {
-        Profile.email = email;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public static String getNewPassword() {
+    public String getNewPassword() {
         return newPassword;
     }
 
-    public static void setNewPassword(String newPassword) {
-        Profile.newPassword = newPassword;
+    public void setNewPassword(String newPassword) {
+        this.newPassword = newPassword;
     }
 }
