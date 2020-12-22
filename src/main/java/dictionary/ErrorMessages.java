@@ -22,6 +22,8 @@ public final class ErrorMessages {
     public static final List<String> FIELDS_CAN_NOT_BLANCK = Collections.unmodifiableList(Arrays.asList("username can't be blank", "password can't be blank", "email can't be blank"));
     public static final String FIELDS_LOGIN_BLANCK = "email or password can't be blank";
     public static final String FIELDS_LOGIN_INVALIDATE = "email or password is invalid";
+    public static final String FIELDS_ARTICLES_BLANCK = "Article fields must not be blank";
+    public static final String ARTICLES_DELETE_MSG = "The article was successfully removed";
 
     /**
      * Error messages that will be displayed in Asserts
@@ -35,6 +37,11 @@ public final class ErrorMessages {
     public static final String PASSWORD_ERROR_MSG = "Password is seen when inspecting password field";
     public static final String FIELDS_BLANCK = "The messages obtained do not correspond to those expected from blank fields";
     public static final String INVALID_DATA = "Invalid data error message is not displayed";
+    public static final String DO_NOT_SHOW_EDITOR_PANEL = "The article creation or editing panel is not displayed";
+    public static final String ARTICLE_TITLE_ERROR = "The title of the article obtained was not what was expected";
+    public static final String ARTICLE_CONTENT_ERROR = "The content of the article obtained was not what was expected";
+    public static final String ARTICLE_DELETE_ERROR = "No successful article removal message was displayed";
+    public static final String ARTICLE_NOT_FOUND_GLOBAL_FEED = "The article was not obtained in global feed";
 
 
 }

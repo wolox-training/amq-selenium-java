@@ -43,4 +43,24 @@ public class Wait {
         ExpectedCondition<WebElement> condition = ExpectedConditions.visibilityOf(element);
         waitForCondition(condition, timeout);
     }
-}
+
+    /**
+     * This method wait for a page to complete loading
+     * @param timeout
+     */
+    public void untilPageLoads(int timeout) {
+        ExpectedCondition<Object> condition = ExpectedConditions.jsReturnsValue("return document.readyState==\"complete\";");
+        waitForCondition(condition, timeout);
+    }
+
+    /**
+     * This method wait until the element is clickable by the locator.
+     * @param timeout
+     * @param element
+     */
+    public void waitForClikableWebelement(int timeout, WebElement element) {
+        ExpectedCondition<WebElement> condition = ExpectedConditions.elementToBeClickable(element);
+        waitForCondition(condition, timeout);
+    }
+
+ }

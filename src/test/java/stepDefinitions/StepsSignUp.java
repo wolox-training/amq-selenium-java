@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import dtos.Profile;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -99,7 +100,5 @@ public class StepsSignUp {
         String valuePassField = singUpPage.getInputValuePassword();
         Assert.assertTrue(PASSWORD_ERROR_MSG, (valuePassField.isEmpty() || valuePassField.equals("")));
     }
-
-
 
 }
