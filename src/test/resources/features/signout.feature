@@ -1,4 +1,4 @@
-Feature: Sign In
+Feature: Sign Out
 
   Background:
     Given that I enter the conduit site
