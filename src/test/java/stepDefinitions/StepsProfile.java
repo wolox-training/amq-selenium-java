@@ -62,4 +62,9 @@ public class StepsProfile {
     public void clearRequiredFields() {
         profilePage.clearProfileFlieds();
     }
+
+    @Then("I click on the log out button")
+    public void iClickOnTheLogOutButton() {
+        profilePage.clickLogOutButton();
+    }
 }
