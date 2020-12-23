@@ -11,7 +11,10 @@ import pages.ArticlesFeedPage;
 import utils.DataManager;
 import utils.FakerManager;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 import static dictionary.ErrorMessages.*;
@@ -134,5 +137,23 @@ public class StepsArticles {
     @Then("the new comment is added to the article")
     public void theNewCommentIsAddedToTheArticle() {
         Assert.assertEquals(DataManager.getInstance().getArticles().getCommentArticle(), articleReadPage.getCommentCard());
+    }
+
+    @And("write a blank comment to the article")
+    public void writeABlankCommentToTheArticle() {
+        articleReadPage.sendCommentArticle("");
+    }
+
+    @Then("the system displays the error message by blank comment")
+    public void theSystemDisplaysTheErrorMessageByBlankComment() {
+        Assert.assertEquals(BLANK_COMMENT_ERROR, COMMENT_ARTICLES_BLANCK, articleReadPage.getAlertMsg());
+    }
+
+    @And("the author and the date of the comment are displayed")
+    public void theAuthorAndTheDateOfTheCommentAreDisplayed() {
+        Assert.assertEquals(DataManager.getInstance().getProfile().getUserName(),articleReadPage.getAuthorComment());
+        Date objDate = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd YYYY", Locale.ENGLISH);
+        Assert.assertEquals(format.format(objDate),articleReadPage.getDateComment());
     }
 }

@@ -3,6 +3,11 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 /**
  * This class contains the webelements of the login form
  */
@@ -31,6 +36,12 @@ public class ArticleReadPage extends BasePage {
 
     @FindBy(css = ".card-text")
     private WebElement commentCard;
+
+    @FindBy(css = " div.card-footer > a:nth-child(2)")
+    private WebElement authorCommentCard;
+
+    @FindBy(css = ".date-posted")
+    private WebElement dateCommentCard;
 
     public ArticleReadPage() {
         super();
@@ -66,5 +77,23 @@ public class ArticleReadPage extends BasePage {
 
     public String getCommentCard(){
         return getTextElement(commentCard);
+    }
+
+    public String getAuthorComment(){
+        return getTextElement(authorCommentCard);
+    }
+
+    public String getDateComment(){
+        return getTextElement(dateCommentCard);
+    }
+
+    public static void main(String[] args) {
+        // Crear una instancia de un objeto Date invocando su constructor
+        Date objDate = new Date();
+
+        SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd YYYY", Locale.ENGLISH);
+        // Mostrar la fecha y la hora usando toString ()
+        System.out.println(format.format(objDate));
+
     }
 }

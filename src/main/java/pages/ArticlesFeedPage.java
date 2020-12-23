@@ -21,14 +21,12 @@ public class ArticlesFeedPage extends BasePage {
    public List<String> articlesTitles(){
         List<String> titles = new ArrayList<>();
        for (WebElement element:listTitleArticle) {
-           System.out.println("El título es: "+element.getText());
            titles.add(element.getText());
        }
        return titles;
    }
 
    public void clickSpecificTitleArticle(String title){
-       System.out.println("Articulo recibido " + title);
        for (WebElement element:listTitleArticle) {
            if(element.getText().equals(title)){
                clickElement(element);
