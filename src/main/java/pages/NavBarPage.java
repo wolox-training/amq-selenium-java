@@ -40,4 +40,8 @@ public class NavBarPage extends BasePage {
     public void clickHomeLink() {
         clickElement(lnkHome);
     }
+
+    public boolean isVisibleSignInLink(){
+        return elementIsDisplayed(lnkSignIn);
+    }
 }
