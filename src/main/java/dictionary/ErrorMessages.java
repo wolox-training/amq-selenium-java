@@ -42,6 +42,9 @@ public final class ErrorMessages {
     public static final String ARTICLE_CONTENT_ERROR = "The content of the article obtained was not what was expected";
     public static final String ARTICLE_DELETE_ERROR = "No successful article removal message was displayed";
     public static final String ARTICLE_NOT_FOUND_GLOBAL_FEED = "The article was not obtained in global feed";
-
+    public static final String URL_PROFILE_PICTURE_ERROR = "The URL of profile picture obtained is not the expected one";
+    public static final String USER_NAME_PROFILE_ERROR = "The username obtained is not the expected one";
+    public static final String EMAIL_PROFILE_ERROR = "The email obtained is not what was expected";
+    public static final String BIOGRAPHY_PROFILE_ERROR = "The Biography obtained is not what was expected";
 
 }

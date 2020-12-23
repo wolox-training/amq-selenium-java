@@ -130,7 +130,7 @@ public class BasePage {
     /**
      * This method waits until the page loads
      */
-    public void waitForPageLoad (){
+    public void waitForPageLoad(){
         wait.untilPageLoads(timeOutSeconds);
     }
 

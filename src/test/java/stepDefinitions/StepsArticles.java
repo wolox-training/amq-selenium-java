@@ -42,7 +42,7 @@ public class StepsArticles {
 
     @Then("the system displays the error message indicating that the fields should not be empty")
     public void theSystemDisplaysTheErrorMessageIndicatingThatTheFieldsShouldNotBeEmpty() {
-        Assert.assertTrue(FIELDS_BLANCK,articlePage.getErrorMessages().contains(FIELDS_ARTICLES_BLANCK));
+        Assert.assertTrue(FIELDS_BLANCK, articlePage.getErrorMessages().contains(FIELDS_ARTICLES_BLANCK));
     }
 
     @And("fill in all the fields of the article form")
@@ -62,8 +62,8 @@ public class StepsArticles {
     @Then("the article is created or edit successfully")
     public void theArticleIsCreatedSuccessfully() {
         Articles articles = DataManager.getInstance().getArticles();
-        Assert.assertEquals(ARTICLE_TITLE_ERROR,articles.getTitleArticle(),articleReadPage.getTitleArticle());
-        Assert.assertEquals(ARTICLE_CONTENT_ERROR,articles.getContentArticle(),articleReadPage.getContentArticle());
+        Assert.assertEquals(ARTICLE_TITLE_ERROR, articles.getTitleArticle(), articleReadPage.getTitleArticle());
+        Assert.assertEquals(ARTICLE_CONTENT_ERROR, articles.getContentArticle(), articleReadPage.getContentArticle());
     }
 
     @And("I create an article")
@@ -85,6 +85,6 @@ public class StepsArticles {
 
     @Then("the article was successfully removed")
     public void theArticleWasSuccessfullyRemoved() {
-        Assert.assertEquals(ARTICLE_DELETE_ERROR,ARTICLES_DELETE_MSG,articleReadPage.getAlertMsg());
+        Assert.assertEquals(ARTICLE_DELETE_ERROR, ARTICLES_DELETE_MSG, articleReadPage.getAlertMsg());
     }
 }

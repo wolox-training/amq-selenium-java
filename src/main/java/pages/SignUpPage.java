@@ -12,7 +12,7 @@ public class SignUpPage extends CommonFormFields {
     private WebElement titleSingUpPage;
 
     @FindBy(xpath = "//input[@placeholder='Username']")
-    private WebElement inputUserName;
+    protected WebElement inputUserName;
 
 
     public SignUpPage() {
@@ -27,6 +27,9 @@ public class SignUpPage extends CommonFormFields {
         sendKeystoElement(inputUserName, userName);
     }
 
+    public String getValuerUserNameField(){
+        return inputUserName.getAttribute(ATTRIBUTE_VALUE);
+    }
 
     public String getInputValuePassword() {
         return inputPassword.getAttribute(ATTRIBUTE_VALUE);
