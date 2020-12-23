@@ -23,6 +23,15 @@ public class ArticleReadPage extends BasePage {
     @FindBy(css = ".article-page>div.banner>div.container")
     private WebElement alertMsg;
 
+    @FindBy(css = "form.comment-form>div>textarea")
+    private WebElement inputComments;
+
+    @FindBy(css = "form.comment-form>div.card-footer>button")
+    private WebElement buttonPostComment;
+
+    @FindBy(css = ".card-text")
+    private WebElement commentCard;
+
     public ArticleReadPage() {
         super();
     }
@@ -45,5 +54,17 @@ public class ArticleReadPage extends BasePage {
 
     public String getAlertMsg(){
         return alertMsg.getText();
+    }
+
+    public void sendCommentArticle(String comment){
+        sendKeystoElement(inputComments, comment);
+    }
+
+    public void clickPostComment(){
+        clickElement(buttonPostComment);
+    }
+
+    public String getCommentCard(){
+        return getTextElement(commentCard);
     }
 }

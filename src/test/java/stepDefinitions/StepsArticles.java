@@ -7,8 +7,12 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import pages.ArticleCreateEditPage;
 import pages.ArticleReadPage;
+import pages.ArticlesFeedPage;
 import utils.DataManager;
 import utils.FakerManager;
+
+import java.util.List;
+import java.util.Random;
 
 import static dictionary.ErrorMessages.*;
 
@@ -16,10 +20,12 @@ public class StepsArticles {
 
     private ArticleCreateEditPage articlePage;
     private ArticleReadPage articleReadPage;
+    private ArticlesFeedPage articlesFeedPage;
 
     public StepsArticles() {
         this.articlePage = new ArticleCreateEditPage();
         this.articleReadPage = new ArticleReadPage();
+        this.articlesFeedPage = new ArticlesFeedPage();
     }
 
     @And("the system shows me a form to create or edit an article")
@@ -86,5 +92,47 @@ public class StepsArticles {
     @Then("the article was successfully removed")
     public void theArticleWasSuccessfullyRemoved() {
         Assert.assertEquals(ARTICLE_DELETE_ERROR, ARTICLES_DELETE_MSG, articleReadPage.getAlertMsg());
+    }
+
+    @And("the system displays the list of items")
+    public void theSystemDisplaysTheListOfItems() {
+        Assert.assertTrue(articlesFeedPage.articlesTitles().size()>0);
+        Articles articles = new Articles();
+        articles.setTitleArticle(randomText(articlesFeedPage.articlesTitles()));
+        DataManager.getInstance().setArticles(articles);
+
+    }
+
+    @And("click on an article title in the list")
+    public void clickOnAnArticleTitleInTheList() {
+        articlesFeedPage.clickSpecificTitleArticle(DataManager.getInstance().getArticles().getTitleArticle());
+    }
+
+    @And("the system opens the article information")
+    public void theSystemOpensTheArticleInformation() {
+        Assert.assertEquals(ARTICLE_TITLE_ERROR, DataManager.getInstance().getArticles().getTitleArticle(), articleReadPage.getTitleArticle());
+    }
+
+    private String randomText(List<String> text){
+        Random random = new Random();
+        return text.get(random.nextInt(text.size()));
+    }
+
+    @And("write a comment to the article")
+    public void writeACommentToTheArticle() {
+        Articles articles = new Articles();
+        articles.setCommentArticle(FakerManager.getInstance().getFaker().country().name());
+        DataManager.getInstance().setArticles(articles);
+        articleReadPage.sendCommentArticle(DataManager.getInstance().getArticles().getCommentArticle());
+    }
+
+    @And("I click post comment")
+    public void iClickPostComment() {
+        articleReadPage.clickPostComment();
+    }
+
+    @Then("the new comment is added to the article")
+    public void theNewCommentIsAddedToTheArticle() {
+        Assert.assertEquals(DataManager.getInstance().getArticles().getCommentArticle(), articleReadPage.getCommentCard());
     }
 }
