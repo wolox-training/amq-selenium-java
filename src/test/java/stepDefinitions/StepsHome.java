@@ -98,4 +98,14 @@ public class StepsHome {
         homePage.clickUserPic();
         iClickTheEditProfileSettingsLink();
     }
+
+    @When("I click on the Settings link")
+    public void iClickOnTheSettingsLink() {
+        homePage.clickSettingsLink();
+    }
+
+    @And("the sign in option is displayed again")
+    public void theSignInOptionIsDisplayedAgain() {
+        Assert.assertTrue(navBarPage.isVisibleSignInLink());
+    }
 }

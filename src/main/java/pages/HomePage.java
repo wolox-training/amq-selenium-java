@@ -31,6 +31,9 @@ public class HomePage extends BasePage {
     @FindBy(linkText = "Edit Profile Settings")
     private WebElement lnkEditProfileSettings;
 
+    @FindBy(xpath = "//a[@href='/settings']")
+    private WebElement lnkSettings;
+
     public HomePage() {
         super();
     }
@@ -65,6 +68,10 @@ public class HomePage extends BasePage {
 
     public void clickEditProfileSettingsLink(){
         clickElement(lnkEditProfileSettings);
+    }
+
+    public void clickSettingsLink(){
+        clickElement(lnkSettings);
     }
 
     public String getUserNameLink(){
