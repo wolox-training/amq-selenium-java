@@ -63,12 +63,16 @@ public class HomePage extends BasePage {
         return elementIsDisplayed(lnkFavoritedArticles);
     }
 
-    public void clicEditProfileSettingsLink(){
+    public void clickEditProfileSettingsLink(){
         clickElement(lnkEditProfileSettings);
     }
 
     public String getUserNameLink(){
-        forceWait();
         return imgUser.getAttribute("alt");
     }
+
+    public void waitForUserNameChange(String userName){
+        wait.waitForAttributeValue(timeOutSeconds,imgUser,"alt", userName);
+    }
+
 }

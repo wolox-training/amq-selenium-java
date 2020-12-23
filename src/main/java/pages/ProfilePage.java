@@ -44,7 +44,7 @@ public class ProfilePage extends SignUpPage {
         sendKeystoElement(inputNewPassword, password);
     }
 
-    public void clicLogOutButton(){
+    public void clickLogOutButton(){
         clickElement(buttonLogOut);
     }
 

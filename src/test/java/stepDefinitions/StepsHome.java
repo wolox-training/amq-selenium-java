@@ -88,11 +88,12 @@ public class StepsHome {
 
     @And("I click the Edit Profile Settings link")
     public void iClickTheEditProfileSettingsLink() {
-        homePage.clicEditProfileSettingsLink();
+        homePage.clickEditProfileSettingsLink();
     }
 
     @And("the username is updated in the navigation bar")
     public void theUsernameIsUpdatedInTheNavigationBar() {
+        homePage.waitForUserNameChange(DataManager.getInstance().getProfile().getUserName());
         Assert.assertEquals(USER_NAME_PROFILE_ERROR, DataManager.getInstance().getProfile().getUserName(), homePage.getUserNameLink());
         homePage.clickUserPic();
         iClickTheEditProfileSettingsLink();

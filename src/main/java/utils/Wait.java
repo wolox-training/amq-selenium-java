@@ -63,4 +63,15 @@ public class Wait {
         waitForCondition(condition, timeout);
     }
 
+    /**
+     * This method expects the given element to have an attribute with a specific value
+     * @param timeout
+     * @param element
+     * @param attribute
+     * @param value
+     */
+    public void waitForAttributeValue(int timeout, WebElement element, String attribute, String value){
+        waitForCondition( wd->element.getAttribute(attribute).equals(value),timeout );
+    }
+
  }
