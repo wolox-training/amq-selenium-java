@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import dtos.Articles;
 import dtos.Profile;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -10,9 +9,6 @@ import org.junit.Assert;
 import pages.HomePage;
 import pages.NavBarPage;
 import utils.DataManager;
-import utils.FakerManager;
-
-import java.util.Date;
 
 import static dictionary.ErrorMessages.ARTICLE_NOT_FOUND_GLOBAL_FEED;
 import static dictionary.ErrorMessages.USER_NAME_PROFILE_ERROR;

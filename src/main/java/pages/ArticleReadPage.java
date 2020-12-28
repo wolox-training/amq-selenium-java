@@ -3,11 +3,6 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 /**
  * This class contains the webelements of the login form
  */
@@ -43,6 +38,9 @@ public class ArticleReadPage extends BasePage {
     @FindBy(css = ".date-posted")
     private WebElement dateCommentCard;
 
+    @FindBy(xpath = "//span[@class='mod-options']//i[@class='ion-trash-a']")
+    private WebElement deleteCommentCard;
+
     public ArticleReadPage() {
         super();
     }
@@ -55,45 +53,40 @@ public class ArticleReadPage extends BasePage {
         return getTextElement(contentArticleCreated);
     }
 
-    public void clickEditLink(){
+    public void clickEditLink() {
         clickElement(linkEditArticle);
     }
 
-    public void clickDeleteLink(){
+    public void clickDeleteLink() {
         clickElement(linkDeleteArticle);
     }
 
-    public String getAlertMsg(){
+    public String getAlertMsg() {
         return alertMsg.getText();
     }
 
-    public void sendCommentArticle(String comment){
+    public void sendCommentArticle(String comment) {
         sendKeystoElement(inputComments, comment);
     }
 
-    public void clickPostComment(){
+    public void clickPostComment() {
         clickElement(buttonPostComment);
     }
 
-    public String getCommentCard(){
+    public String getCommentCard() {
         return getTextElement(commentCard);
     }
 
-    public String getAuthorComment(){
+    public String getAuthorComment() {
         return getTextElement(authorCommentCard);
     }
 
-    public String getDateComment(){
+    public String getDateComment() {
         return getTextElement(dateCommentCard);
     }
 
-    public static void main(String[] args) {
-        // Crear una instancia de un objeto Date invocando su constructor
-        Date objDate = new Date();
-
-        SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd YYYY", Locale.ENGLISH);
-        // Mostrar la fecha y la hora usando toString ()
-        System.out.println(format.format(objDate));
-
+    public void clickDeleteCommentButton() {
+        clickElement(deleteCommentCard);
     }
+
 }

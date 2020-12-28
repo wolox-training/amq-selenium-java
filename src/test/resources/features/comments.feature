@@ -15,6 +15,7 @@ Feature: comments
     And I click post comment
     Then the new comment is added to the article
     And the author and the date of the comment are displayed
+    And the comment is removed
 
   @HappyPath
   Scenario: Blank comment

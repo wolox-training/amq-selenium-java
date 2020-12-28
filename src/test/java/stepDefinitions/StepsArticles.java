@@ -99,7 +99,7 @@ public class StepsArticles {
 
     @And("the system displays the list of items")
     public void theSystemDisplaysTheListOfItems() {
-        Assert.assertTrue(articlesFeedPage.articlesTitles().size()>0);
+        Assert.assertTrue(articlesFeedPage.articlesTitles().size() > 0);
         Articles articles = new Articles();
         articles.setTitleArticle(randomText(articlesFeedPage.articlesTitles()));
         DataManager.getInstance().setArticles(articles);
@@ -116,7 +116,7 @@ public class StepsArticles {
         Assert.assertEquals(ARTICLE_TITLE_ERROR, DataManager.getInstance().getArticles().getTitleArticle(), articleReadPage.getTitleArticle());
     }
 
-    private String randomText(List<String> text){
+    private String randomText(List<String> text) {
         Random random = new Random();
         return text.get(random.nextInt(text.size()));
     }
@@ -151,9 +151,14 @@ public class StepsArticles {
 
     @And("the author and the date of the comment are displayed")
     public void theAuthorAndTheDateOfTheCommentAreDisplayed() {
-        Assert.assertEquals(DataManager.getInstance().getProfile().getUserName(),articleReadPage.getAuthorComment());
+        Assert.assertEquals(DataManager.getInstance().getProfile().getUserName(), articleReadPage.getAuthorComment());
         Date objDate = new Date();
-        SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd YYYY", Locale.ENGLISH);
-        Assert.assertEquals(format.format(objDate),articleReadPage.getDateComment());
+        SimpleDateFormat format = new SimpleDateFormat("EEE MMM dd yyyy", Locale.ENGLISH);
+        Assert.assertEquals(format.format(objDate), articleReadPage.getDateComment());
+    }
+
+    @And("the comment is removed")
+    public void theCommentIsRemoved() {
+        articleReadPage.clickDeleteCommentButton();
     }
 }
