@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import dtos.Profile;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -56,6 +57,9 @@ public class StepsHome {
 
     @And("I click on the Global Feed link")
     public void iClickOnTheGlobalFeedLink() {
+        Profile profile = new Profile();
+        profile.setUserName(homePage.getUserNameLink());
+        DataManager.getInstance().setProfile(profile);
         homePage.clickGlobalFeedLnk();
     }
 

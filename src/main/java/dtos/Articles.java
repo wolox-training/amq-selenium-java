@@ -6,6 +6,7 @@ public class Articles {
     private String aboutArticle = "";
     private String contentArticle = "";
     private String tagArticle = "";
+    private String commentArticle = "";
 
     public String getTitleArticle() {
         return titleArticle;
@@ -37,5 +38,13 @@ public class Articles {
 
     public void setTagArticle(String tagArticle) {
         this.tagArticle = tagArticle;
+    }
+
+    public String getCommentArticle() {
+        return commentArticle;
+    }
+
+    public void setCommentArticle(String commentArticle) {
+        this.commentArticle = commentArticle;
     }
 }

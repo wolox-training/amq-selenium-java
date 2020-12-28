@@ -23,6 +23,7 @@ public final class ErrorMessages {
     public static final String FIELDS_LOGIN_BLANCK = "email or password can't be blank";
     public static final String FIELDS_LOGIN_INVALIDATE = "email or password is invalid";
     public static final String FIELDS_ARTICLES_BLANCK = "Article fields must not be blank";
+    public static final String COMMENT_ARTICLES_BLANCK = "Comment field must not be blank";
     public static final String ARTICLES_DELETE_MSG = "The article was successfully removed";
 
     /**
@@ -46,5 +47,6 @@ public final class ErrorMessages {
     public static final String USER_NAME_PROFILE_ERROR = "The username obtained is not the expected one";
     public static final String EMAIL_PROFILE_ERROR = "The email obtained is not what was expected";
     public static final String BIOGRAPHY_PROFILE_ERROR = "The Biography obtained is not what was expected";
+    public static final String BLANK_COMMENT_ERROR = "Blank comment error message is not displayed";
 
 }
