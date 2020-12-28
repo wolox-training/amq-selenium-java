@@ -112,4 +112,11 @@ public class StepsHome {
     public void theSignInOptionIsDisplayedAgain() {
         Assert.assertTrue(navBarPage.isVisibleSignInLink());
     }
+
+    @And("I hope the page to load")
+    public void iHopeThePageToLoad() {
+        homePage.waitForPageLoad();
+    }
+
+
 }

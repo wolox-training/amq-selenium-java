@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -31,6 +32,9 @@ public class HomePage extends BasePage {
     @FindBy(linkText = "Edit Profile Settings")
     private WebElement lnkEditProfileSettings;
 
+    @FindBy(css = ".article-preview:nth-child(1) .ion-heart")
+    private WebElement heartIcon;
+
     @FindBy(xpath = "//a[@href='/settings']")
     private WebElement lnkSettings;
 
@@ -38,48 +42,66 @@ public class HomePage extends BasePage {
         super();
     }
 
-    public boolean isVisibleImgUser(){
+    public boolean isVisibleImgUser() {
         return imgUser.isDisplayed();
     }
 
-    public void clickGlobalFeedLnk(){
+    public void clickGlobalFeedLnk() {
         clickElement(lnkGlobalFeed);
     }
 
-    public String getFirstArticle(){
+    public String getFirstArticle() {
         return getTextElement(listArticles.get(0));
     }
 
-    public void clickUserPic(){
+    public void clickUserPic() {
         clickElement(imgUser);
     }
 
-    public boolean isVisibleYourFeedLink(){
+    public boolean isVisibleYourFeedLink() {
         forceWait();
         return elementIsDisplayed(lnkYourFeed);
     }
-    public boolean isVisibleMyArticlesLink(){
+
+    public void clickYourFeedLink() {
+        clickElement(lnkYourFeed);
+    }
+
+    public boolean isVisibleMyArticlesLink() {
         forceWait();
         return elementIsDisplayed(lnkMyArticles);
     }
-    public boolean isVisibleFavoritedArticles(){
+
+    public boolean isVisibleFavoritedArticles() {
         return elementIsDisplayed(lnkFavoritedArticles);
     }
 
-    public void clickEditProfileSettingsLink(){
+    public void clickFavoritedArticlesLink() {
+        clickElement(lnkFavoritedArticles);
+    }
+
+    public void clickEditProfileSettingsLink() {
         clickElement(lnkEditProfileSettings);
     }
 
-    public void clickSettingsLink(){
+    public void clickSettingsLink() {
         clickElement(lnkSettings);
     }
 
-    public String getUserNameLink(){
+    public String getUserNameLink() {
         return imgUser.getAttribute("alt");
     }
 
-    public void waitForUserNameChange(String userName){
-        wait.waitForAttributeValue(timeOutSeconds,imgUser,"alt", userName);
+    public void waitForUserNameChange(String userName) {
+        wait.waitForAttributeValue(timeOutSeconds, imgUser, "alt", userName);
     }
 
+    public int getAmountFavorites() {
+        return Integer.parseInt(getTextElement(heartIcon.findElement(By.xpath(".."))));
+    }
+
+    public void clickFavoriteIcon() {
+        clickElement(heartIcon);
+        forceWait();
+    }
 }

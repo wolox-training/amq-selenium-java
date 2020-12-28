@@ -7,6 +7,7 @@ public class Articles {
     private String contentArticle = "";
     private String tagArticle = "";
     private String commentArticle = "";
+    private int amountFavorites = 0;
 
     public String getTitleArticle() {
         return titleArticle;
@@ -46,5 +47,13 @@ public class Articles {
 
     public void setCommentArticle(String commentArticle) {
         this.commentArticle = commentArticle;
+    }
+
+    public int getAmountFavorites() {
+        return amountFavorites;
+    }
+
+    public void setAmountFavorites(int amountFavorites) {
+        this.amountFavorites = amountFavorites;
     }
 }
