@@ -18,21 +18,19 @@ public class ArticlesFeedPage extends BasePage {
         super();
     }
 
-   public List<String> articlesTitles(){
+    public List<String> articlesTitles() {
         List<String> titles = new ArrayList<>();
-       for (WebElement element:listTitleArticle) {
-           titles.add(element.getText());
-       }
-       return titles;
-   }
+        for (WebElement element : listTitleArticle) {
+            titles.add(element.getText());
+        }
+        return titles;
+    }
 
-   public void clickSpecificTitleArticle(String title){
-       for (WebElement element:listTitleArticle) {
-           if(element.getText().equals(title)){
-               clickElement(element);
-               break;
-           }
-       }
-
-   }
+    public void clickSpecificTitleArticle(String title) {
+        WebElement article = listTitleArticle.stream()
+                .filter(item -> item.getText().equals(title))
+                .findFirst()
+                .get();
+        clickElement(article);
+    }
 }

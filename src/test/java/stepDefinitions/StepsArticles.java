@@ -99,11 +99,10 @@ public class StepsArticles {
 
     @And("the system displays the list of items")
     public void theSystemDisplaysTheListOfItems() {
-        Assert.assertTrue(articlesFeedPage.articlesTitles().size() > 0);
+        Assert.assertFalse(articlesFeedPage.articlesTitles().isEmpty());
         Articles articles = new Articles();
         articles.setTitleArticle(randomText(articlesFeedPage.articlesTitles()));
         DataManager.getInstance().setArticles(articles);
-
     }
 
     @And("click on an article title in the list")

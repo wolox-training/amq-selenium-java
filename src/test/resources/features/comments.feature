@@ -17,7 +17,7 @@ Feature: comments
     And the author and the date of the comment are displayed
     And the comment is removed
 
-  @HappyPath
+  @SadPath
   Scenario: Blank comment
     When I click on the Global Feed link
     And the system displays the list of items
