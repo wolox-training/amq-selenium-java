@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -32,7 +31,7 @@ public class HomePage extends BasePage {
     @FindBy(linkText = "Edit Profile Settings")
     private WebElement lnkEditProfileSettings;
 
-    @FindBy(css = ".article-preview:nth-child(1) .ion-heart")
+    @FindBy(css = ".article-preview:nth-child(1) .btn-sm")
     private WebElement heartIcon;
 
     @FindBy(xpath = "//a[@href='/settings']")
@@ -97,7 +96,7 @@ public class HomePage extends BasePage {
     }
 
     public int getAmountFavorites() {
-        return Integer.parseInt(getTextElement(heartIcon.findElement(By.xpath(".."))));
+        return Integer.parseInt(getTextElement(heartIcon));
     }
 
     public void clickFavoriteIcon() {

@@ -1,7 +1,7 @@
 Feature: favorites
 
   @SadPath
-  Scenario: A comment is made successfully
+  Scenario: Add favorite without being authenticated
     Given that I enter the conduit site
     And I hope the page to load
     And captured the number of favorites for the first item on the list
@@ -9,7 +9,7 @@ Feature: favorites
     Then the number of favorites does not change
 
   @HappyPath
-  Scenario: A comment is made successfully
+  Scenario: Add favorite while authenticated
     Given that I enter the conduit site
     And I click on the Sign In link
     And Authenticate me on the site
