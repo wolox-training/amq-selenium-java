@@ -160,4 +160,5 @@ public class StepsArticles {
     public void theCommentIsRemoved() {
         articleReadPage.clickDeleteCommentButton();
     }
+
 }
