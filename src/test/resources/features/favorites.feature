@@ -3,7 +3,7 @@ Feature: favorites
   @SadPath
   Scenario: A comment is made successfully
     Given that I enter the conduit site
-    And I hope the page to load
+    And I wait for the page to load
     And captured the number of favorites for the first item on the list
     When I click on the favorites option of the first item in the list
     Then the number of favorites does not change
