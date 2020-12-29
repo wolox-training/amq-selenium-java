@@ -113,8 +113,8 @@ public class StepsHome {
         Assert.assertTrue(navBarPage.isVisibleSignInLink());
     }
 
-    @And("I hope the page to load")
-    public void iHopeThePageToLoad() {
+    @And("I wait for the page to load")
+    public void iWaitThePageToLoad() {
         homePage.waitForPageLoad();
     }
 
