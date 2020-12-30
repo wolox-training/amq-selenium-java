@@ -33,8 +33,8 @@ public class StepsFollowUsers {
 
     @And("find a different user")
     public void findADifferentUser() {
-        articlesFeedPage.clickArticleByAnotherUser(DataManager.getInstance().getProfile().getUserName());
         Articles articles = new Articles();
+        articles.setAuthorArticle(articlesFeedPage.clickArticleByAnotherUser(DataManager.getInstance().getProfile().getUserName()));
         articles.setTitlesArticles(articlesFeedPage.articlesTitles());
         DataManager.getInstance().setArticles(articles);
     }
@@ -65,4 +65,5 @@ public class StepsFollowUsers {
         navBarPage.clickHomeLink();
         Assert.assertTrue(articlesFeedPage.articlesTitles().isEmpty());
     }
+
 }
