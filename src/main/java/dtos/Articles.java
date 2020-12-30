@@ -1,8 +1,12 @@
 package dtos;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Articles {
 
     private String titleArticle = "";
+    private List<String> titlesArticles = new ArrayList<>();
     private String aboutArticle = "";
     private String contentArticle = "";
     private String tagArticle = "";
@@ -55,5 +59,13 @@ public class Articles {
 
     public void setAmountFavorites(int amountFavorites) {
         this.amountFavorites = amountFavorites;
+    }
+
+    public List<String> getTitlesArticles() {
+        return titlesArticles;
+    }
+
+    public void setTitlesArticles(List<String> titlesArticles) {
+        this.titlesArticles = titlesArticles;
     }
 }
