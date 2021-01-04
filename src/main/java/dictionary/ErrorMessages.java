@@ -48,5 +48,6 @@ public final class ErrorMessages {
     public static final String EMAIL_PROFILE_ERROR = "The email obtained is not what was expected";
     public static final String BIOGRAPHY_PROFILE_ERROR = "The Biography obtained is not what was expected";
     public static final String BLANK_COMMENT_ERROR = "Blank comment error message is not displayed";
+    public static final String NO_FOUND_USER_ARTICLES = "No user articles found in Your Feed section";
 
 }

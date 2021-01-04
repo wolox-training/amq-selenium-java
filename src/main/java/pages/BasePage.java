@@ -1,6 +1,7 @@
 package pages;
 
 import io.github.cdimascio.dotenv.Dotenv;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,7 +22,7 @@ public class BasePage {
     protected Wait wait;
     protected Dotenv dotenv;
     protected int timeOutSeconds;
-    protected final String ATTRIBUTE_VALUE="value";
+    protected final String ATTRIBUTE_VALUE = "value";
 
     @FindBy(className = "error-messages")
     protected WebElement panelErrorMsg;
@@ -58,6 +59,7 @@ public class BasePage {
 
     /**
      * This method receives a webelement, waits for it to be visible and clicks on it
+     *
      * @param element
      */
     protected void clickElement(WebElement element) {
@@ -65,8 +67,15 @@ public class BasePage {
         element.click();
     }
 
+    protected void clickElementJS(WebElement element) {
+        wait.waitForClikableWebelement(timeOutSeconds, element);
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", element);
+    }
+
     /**
      * This method receives a webelement, expects it to be visible, and gets the text of the element
+     *
      * @param element
      * @return
      */
@@ -77,6 +86,7 @@ public class BasePage {
 
     /**
      * This method receives a webelement and a string, expects the element to be visible and sends it the string
+     *
      * @param element
      * @param value
      */
@@ -88,7 +98,7 @@ public class BasePage {
     /**
      * With this method a forced wait is performed
      */
-    protected void forceWait(){
+    protected void forceWait() {
         try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -98,13 +108,14 @@ public class BasePage {
 
     /**
      * This method verifies if a webelement is displayed
+     *
      * @param element
      * @return
      */
-    protected boolean elementIsDisplayed(WebElement element){
-        try{
+    protected boolean elementIsDisplayed(WebElement element) {
+        try {
             return element.isDisplayed();
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -117,20 +128,20 @@ public class BasePage {
     protected void deleteInformationFieldValue(WebElement element) {
         int con = 5;
         do {
-            element.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+            element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
             forceWait();
             con--;
-        } while (!(element.getAttribute(ATTRIBUTE_VALUE).isEmpty())&&con!=0);
+        } while (!(element.getAttribute(ATTRIBUTE_VALUE).isEmpty()) && con != 0);
     }
 
-    protected void cleanTextAreaField(WebElement element){
-        element.sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+    protected void cleanTextAreaField(WebElement element) {
+        element.sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
     }
 
     /**
      * This method waits until the page loads
      */
-    public void waitForPageLoad(){
+    public void waitForPageLoad() {
         wait.untilPageLoads(timeOutSeconds);
     }
 
