@@ -12,5 +12,6 @@ public final class WebApplicationTexts {
     public static final String TITLE_YOUR_SETTINGS = "Your Settings";
     public static final String TITLE_FOLLOW_BUTTON = "Follow";
     public static final String TITLE_UNFOLLOW_BUTTON = "Unfollow";
+    public static final String WITHOUT_ARTICLES = "No articles are here... yet.";
 
 }

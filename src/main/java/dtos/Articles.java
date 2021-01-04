@@ -11,6 +11,7 @@ public class Articles {
     private String contentArticle = "";
     private String tagArticle = "";
     private String commentArticle = "";
+    private String authorArticle = "";
     private int amountFavorites = 0;
 
     public String getTitleArticle() {
@@ -59,6 +60,14 @@ public class Articles {
 
     public void setAmountFavorites(int amountFavorites) {
         this.amountFavorites = amountFavorites;
+    }
+
+    public String getAuthorArticle() {
+        return authorArticle;
+    }
+
+    public void setAuthorArticle(String authorArticle) {
+        this.authorArticle = authorArticle;
     }
 
     public List<String> getTitlesArticles() {
