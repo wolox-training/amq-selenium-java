@@ -54,9 +54,9 @@ public class DataManager {
     }
 
     /**
-     * Remover.
+     * remove.
      */
-    public static void remover() {
+    public static void remove() {
         scenario.remove();
     }
 }

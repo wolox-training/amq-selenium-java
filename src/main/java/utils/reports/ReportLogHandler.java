@@ -2,7 +2,6 @@ package utils.reports;
 
 import com.aventstack.extentreports.Status;
 import utils.DataManager;
-import utils.reports.Report;
 
 import java.util.logging.Handler;
 import java.util.logging.Level;

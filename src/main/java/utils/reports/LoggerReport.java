@@ -5,6 +5,8 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.model.Media;
 import utils.screenshots.Screenshots;
 
+import java.util.Optional;
+
 public class LoggerReport {
 
     private ExtentTest extentTest;
@@ -13,11 +15,8 @@ public class LoggerReport {
         this.extentTest = extentTest;
     }
 
-    private Media createMedia(boolean screenShot) {
-        if (screenShot) {
-            return createMedia();
-        }
-        return null;
+    private Optional<Media> createMedia(boolean screenShot) {
+        return Optional.ofNullable( screenShot ? createMedia() : null );
     }
 
     private Media createMedia() {
@@ -26,7 +25,7 @@ public class LoggerReport {
     }
 
     public void log(Status status, String details, Throwable t, boolean screenShot) {
-        extentTest.log(status, details, t, createMedia(screenShot));
+        extentTest.log(status, details, t, createMedia(screenShot).orElse(null));
     }
 
     public void log(Status status, String details) {

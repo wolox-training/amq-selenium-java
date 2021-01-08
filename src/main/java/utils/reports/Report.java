@@ -38,7 +38,7 @@ import java.util.Map;
 import static com.aventstack.extentreports.reporter.configuration.ViewName.*;
 
 /**
- * Adaptada de: https://medium.com/@praveendavidmathew/creating-cucumber-extent-report-the-right-way-3298a247e545
+ * Adapted from: https://medium.com/@praveendavidmathew/creating-cucumber-extent-report-the-right-way-3298a247e545
  * https://sqa.stackexchange.com/questions/44536/how-to-implement-extent-report-in-cucumber-using-eventlistener-and-where-to-find
  * https://github.com/grasshopper7/extentreports-cucumber6-adapter
  */
@@ -49,7 +49,7 @@ public class Report implements EventListener {
     public static final String IMAGE_PNG = "image/png";
     public static final String EXT_PNG = ".png";
     private static final String IMAGES = "img/";
-    private static final String EVIDENCIAS =
+    private static final String EVIDENCES =
             dotenv.get("PATH.EVIDENCE") + File.separator + currentDate()
             + File.separator;
     private static ThreadLocal<Report> reportThreadLocal = new ThreadLocal<>();
@@ -92,10 +92,10 @@ public class Report implements EventListener {
     }
 
     /**
-     * Método que se ejecuta de forma automatica, permite registrar que eventos se van a capturar
-     * durante la ejecución de la prueba
+     * Method that runs automatically, allows you to record which events will be
+     * captured during the test execution
      *
-     * @param publisher Instancia del publicador de eventos
+     * @param publisher Event publisher instance
      */
     /*
      * :: is method reference , so this::collecTag means collectTags method in
@@ -120,10 +120,10 @@ public class Report implements EventListener {
     }
 
     /**
-     * Método que se invoca cuano inicia la ejecución de un Test. En este método se crea la
-     * instancia del reporte
+     * Method that is invoked when you start the execution of a Test.
+     * In this method the report instance is created
      *
-     * @param event Instancia del evento
+     * @param event Event instance
      */
     /*
      * Here we set argument type as TestRunStarted if you set anything else then the
@@ -146,14 +146,14 @@ public class Report implements EventListener {
     }
 
     /**
-     * Método que crea una instancia de un {@link ExtentSparkReporter} y realiza una configuración
-     * básica del mismo
+     * Method that creates an instance of a {@link ExtentSparkReporter} and perform a
+     * basic configuration of it
      *
-     * @param name Nombre del archivo del nuevo reporte
-     * @return Instancia de {@link ExtentSparkReporter} creada
+     * @param name New report file name
+     * @return Instancia de {@link ExtentSparkReporter} created
      */
     private ExtentSparkReporter createExtentSparkReporter(String name) {
-        ExtentSparkReporter reporter = new ExtentSparkReporter(EVIDENCIAS.concat(name));
+        ExtentSparkReporter reporter = new ExtentSparkReporter(EVIDENCES.concat(name));
         reporter.config().setTheme(Theme.STANDARD);
         reporter.viewConfigurer()
             .viewOrder()
@@ -166,20 +166,19 @@ public class Report implements EventListener {
     }
 
     /**
-     * Metodo que se invoca cuando el test finaliza, esto sucede cuando todos los archivos features
-     * son completados, se emite la orden de generación de reporte (flush)
+     * Method that is invoked when the test ends, this happens when all the features
+     * files are completed, the report generation order (flush) is issued
      *
-     * @param event Instancia del evento generado
+     * @param event Generated event instance
      */
     private void runFinished(TestRunFinished event) {
         extent.flush();
     }
 
     /**
-     * Metodo que se invoca cuando un archivo feature es leido, en este momento se crea el nuevo
-     * feature
+     * Method that is invoked when a feature file is read, at this time the new feature is created
      *
-     * @param event Instancia del evento de lectura del feature
+     * @param event Feature read event instance
      */
     private void featureRead(TestSourceRead event) {
         String featureSource = event.getUri().toString();
@@ -190,10 +189,10 @@ public class Report implements EventListener {
     }
 
     /**
-     * Método ejecutado cuando inicia la ejecución de un scenario, en este momento se crea el nodo
-     * para el scenario
+     * Method executed when you start the execution of a scenario, at this moment
+     * the node for the scenario is created
      *
-     * @param event Instancia del evento
+     * @param event Event instance
      */
     private void scenarioStarted(TestCaseStarted event) {
         String featureName = event.getTestCase().getUri().toString();
@@ -202,10 +201,10 @@ public class Report implements EventListener {
     }
 
     /**
-     * Método que se ejecuta cuando un step inicia, el método crea el nodo para el nuevo step. Se
-     * puede generar el evento cuando inicia un step o cuando se ejecuta un Hook
+     * Method that is executed when a step starts, the method creates the node for the new step.
+     * The event can be generated when a step starts or when a Hook is executed
      *
-     * @param event Instancia del evento generado
+     * @param event Generated event instance
      */
     private void stepStarted(TestStepStarted event) {
         String stepName;
@@ -223,9 +222,9 @@ public class Report implements EventListener {
     }
 
     /**
-     * Método que se ejecuta cuando un step finaliza
+     * Method that is executed when a step ends
      *
-     * @param event Instancia del evento
+     * @param event Event instance
      */
     private void stepFinished(TestStepFinished event) {
         Status status;
@@ -255,9 +254,9 @@ public class Report implements EventListener {
     }
 
     /**
-     * Metodo que permite la adicion de imagenes a los reportes
+     * Method that allows the addition of images to reports
      *
-     * @param event Evento generado con la inclusion de un elemento embebido
+     * @param event Event generated with the inclusion of an embedded element
      */
     private synchronized void embedEvent(EmbedEvent event) {
         String mimeType = event.getMediaType();
@@ -272,10 +271,10 @@ public class Report implements EventListener {
     }
 
     /**
-     * Metodo que adiciona la imagen en la estructura del reporte
+     * Method that adds the image in the report structure
      *
-     * @param data Datos de la imagen
-     * @return Media que contiene la imagen adjunta
+     * @param data Image data
+     * @return Media containing the attached image
      */
     public synchronized Media createMediaImage(byte[] data) {
 
@@ -286,18 +285,18 @@ public class Report implements EventListener {
     }
 
     /**
-     * Metodo que adiciona la imagen en la estructura del reporte
+     * Method that adds the image in the report structure
      *
-     * @param fileName Nombre del archivo
-     * @param data     Datos de la imagen
-     * @param mimeType Tipo de imagen
-     * @return Media que contiene la imagen adjunta
+     * @param fileName File name
+     * @param data     Image data
+     * @param mimeType Image type
+     * @return Media containing the attached image
      */
     public synchronized Media createMediaImage(String fileName, byte[] data, String mimeType) {
         try {
             StringBuilder subPath = new StringBuilder(IMAGES)
                 .append(getScenarioName().replace('"', '|').replace(':', '-'));
-            StringBuilder basePath = new StringBuilder(EVIDENCIAS)
+            StringBuilder basePath = new StringBuilder(EVIDENCES)
                 .append(subPath.toString());
 
             Path path = Paths.get(basePath.toString(), fileName.toString());

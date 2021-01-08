@@ -15,10 +15,6 @@ import java.util.logging.SimpleFormatter;
 
 /**
  * Utility class for general configuration of Logs
- *
- * @author Ana Maria Quintero Leal
- * @version 1.0
- * @since 25 oct. 2020
  */
 public class LogConfiguracion {
 
