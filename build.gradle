@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id 'maven'
 }
 
 group 'com.wolox.training'
@@ -22,5 +23,22 @@ dependencies {
 }
 
 test {
-    useJUnitPlatform()
+    ignoreFailures true
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testRuntime
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, compileTestJava
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['-f', 'pretty', '--glue', 'gradle.cucumber', 'src/test/resources']
+        }
+    }
 }
